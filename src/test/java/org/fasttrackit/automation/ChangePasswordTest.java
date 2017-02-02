@@ -1,9 +1,12 @@
 package org.fasttrackit.automation;
+import com.sdl.selenium.web.utils.Utils;
 import org.fasttrackit.util.TestBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
 
 public class ChangePasswordTest extends TestBase {
 
@@ -18,6 +21,32 @@ public class ChangePasswordTest extends TestBase {
     @Test
     public void changePasswordWithInvalidCurrentPassword(){
 
+        openPage();
+
+        page.changePassword("wrong.pass","new.pass","new.pass" );
+
+        assertThat(page.getStatusMessage(), is("Your preview password is incorrect!"));
+    }
+
+    @Test
+    public void changePasswordWithInvalidRepeatPassword(){
+
+        openPage();
+
+        page.changePassword("eu.pass","new.pass1","new.pass2" );
+
+        assertThat(page.getStatusMessage(), is("Password does not match the confirm password!"));
+    }
+
+    @Test
+    public void changePasswordWithSuccess(){
+        openPage();
+
+        page.changePassword("eu.pass","eu.pass2","eu.pass2" );
+        assertThat(page.getStatusMessage(), is("Your password has been successfully changed."));
+    }
+
+    private void openPage() {
         openBrowser();
         loginPage.login("eu@fast.com","eu.pass");
 
@@ -25,12 +54,6 @@ public class ChangePasswordTest extends TestBase {
         WebElement preferencesBtn = driver.findElement(By.xpath("//button[@data-target='#preferences-win']"));
         preferencesBtn.click();
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        page.changePassword("wrong.pass","new.pass","new.pass" );
+        Utils.sleep(2000);
     }
 }

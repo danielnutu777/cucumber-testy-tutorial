@@ -1,13 +1,11 @@
 package org.fasttrackit.automation;
-
-import junit.framework.Assert;
 import org.fasttrackit.util.TestBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
-import org.testng.internal.Utils;
+
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -42,7 +40,7 @@ public class LoginTest extends TestBase {
 
             loginPage.login("eu@fast.com", "wrongpass");
 
-            WebElement errorElement = driver.findElement(By.className("error-msg"));
+                WebElement errorElement = driver.findElement(By.className("error-msg"));
                 System.out.println(errorElement.getText());
                 assertThat(errorElement.getText(), is("Invalid user or password!"));
     }
