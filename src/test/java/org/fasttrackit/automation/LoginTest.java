@@ -21,7 +21,7 @@ public class LoginTest extends TestBase {
 
         @Test
             public void validLoginTest() {
-            openBrowser();
+            openLoginPage();
 
             page.login("eu@fast.com","eu.pass");
 
@@ -36,7 +36,7 @@ public class LoginTest extends TestBase {
 
         @Test
             public void invalidPasswordTest() {
-            openBrowser();
+            openLoginPage();
 
             page.login("eu@fast.com", "wrongpass");
 

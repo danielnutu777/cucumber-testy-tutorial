@@ -1,6 +1,7 @@
 package org.fasttrackit.util;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,8 +24,11 @@ public abstract class TestBase {
             LOGGER.error("Exception when start suite", e);
         }
     }
-    protected void openBrowser() {
+    protected void openLoginPage() {
         System.out.println("ready");
         driver.get("https://rawgit.com/sdl/Testy/master/src/test/functional/app-demo/login.html");
     }
+
+
+
 }
