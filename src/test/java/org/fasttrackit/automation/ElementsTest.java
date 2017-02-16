@@ -6,8 +6,7 @@ import static org.junit.Assert.assertThat;
 
 public class ElementsTest extends TestBase {
 
-    private LoginView loginView = new LoginView();
-    private ElementsView page = new ElementsView();
+
 
     @Test
     public void checkboxesTest(){
@@ -38,4 +37,5 @@ public class ElementsTest extends TestBase {
         page.autoOption.click();
         page.manualOption.click();
     }
+
 }
