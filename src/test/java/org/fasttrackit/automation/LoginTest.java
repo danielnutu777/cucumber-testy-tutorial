@@ -1,8 +1,12 @@
 package org.fasttrackit.automation;
+import com.sdl.selenium.web.WebLocator;
+import com.sdl.selenium.web.table.Table;
 import org.fasttrackit.util.TestBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 
@@ -14,7 +18,7 @@ public class LoginTest extends TestBase {
       //private LoginPage page;
         private LoginView page = new LoginView();
 
-      /*public LoginTest() {
+     /* public LoginTest() {
 
             page = PageFactory.initElements(driver, LoginPage.class);
     }*/
@@ -44,4 +48,27 @@ public class LoginTest extends TestBase {
                 System.out.println(errorElement.getText());
                 assertThat(errorElement.getText(), is("Invalid user or password!"));
     }
+
+
+        @Test
+        public void validLoginTestWithMultipleAccountsSetup(){
+
+            openLoginPage();
+        }
+
+        @Test(dependsOnMethods = "validLoginTestWithMultipleAccountsSetup", dataProvider = "emailsProvider")
+            public void validLoginTestWithDataProvider(String emails, String passwords){
+
+            page.loginWithMultipleAccounts(emails, passwords);
+
+        }
+
+        @DataProvider
+            public static Object[][] emailsProvider(){
+            return new Object[][] {
+                    {"eu@fast.com","eu.pass"},
+                    {"tu@fast.com", "tu.pass"},
+                    {"el@fast.com",	"el.pass"}
+            };
+        }
 }

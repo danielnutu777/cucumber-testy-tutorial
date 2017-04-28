@@ -3,7 +3,6 @@ package org.fasttrackit.util;
 import org.fasttrackit.automation.ElementsView;
 import org.fasttrackit.automation.LoginView;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,6 +15,7 @@ public abstract class TestBase {
     protected static WebDriver driver;
     protected LoginView loginView = new LoginView();
     protected ElementsView page = new ElementsView();
+
 
     static {
         startSuite();
@@ -32,7 +32,4 @@ public abstract class TestBase {
         System.out.println("ready");
         driver.get("https://rawgit.com/sdl/Testy/master/src/test/functional/app-demo/login.html");
     }
-
-
-
 }

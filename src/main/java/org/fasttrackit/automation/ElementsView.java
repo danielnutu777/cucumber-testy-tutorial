@@ -14,14 +14,14 @@ public class ElementsView {
     public WebLocator menuDropDown = new WebLocator().setClasses("dropdown-menu");
     public WebLocator manualOption = new WebLocator(menuDropDown);
 
-
+    public DropDown tech = new DropDown();
 
 
     public static void main(String[] args) {
 
         ElementsView test = new ElementsView();
 
-        System.out.println(test.autoOption.getSelector());
+        System.out.println(test.tech.getSelector());
         System.out.println(test.stopProcessLabel.getSelector());
         System.out.println(test.withEnterLabel.getSelector());
         System.out.println(test.stopProcessCheckbox.getSelector());

@@ -2,6 +2,9 @@ package org.fasttrackit.automation;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
+
 public class ChangePasswordPage {
 
     @FindBy(name = "password")
@@ -27,5 +30,22 @@ public class ChangePasswordPage {
         String msg = statusMsg.getText();
         System.out.println(msg);
         return msg;
+    }
+    public String getStatusMessage2(){
+        String msg2 = statusMsg.getText();
+        System.out.println(msg2);
+        return msg2;
+    }
+    public void changePass(String current, String newP, String repeat){
+        currentPassword.sendKeys(current);
+        newPassword.sendKeys(newP);
+        repeatPassword.sendKeys(repeat);
+        saveBtn.click();
+
+    }
+    public void clearPass(){
+        currentPassword.clear();
+        newPassword.clear();
+        repeatPassword.clear();
     }
 }

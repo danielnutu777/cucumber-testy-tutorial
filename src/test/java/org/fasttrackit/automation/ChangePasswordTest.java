@@ -1,9 +1,11 @@
 package org.fasttrackit.automation;
+import com.sdl.selenium.web.WebLocator;
 import com.sdl.selenium.web.utils.Utils;
 import org.fasttrackit.util.TestBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -26,6 +28,8 @@ public class ChangePasswordTest extends TestBase {
         page.changePassword("wrong.pass","new.pass","new.pass" );
 
         assertThat(page.getStatusMessage(), is("Your preview password is incorrect!"));
+
+
     }
 
     @Test
